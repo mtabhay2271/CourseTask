@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Course App</title>
+
+  <link href="/css/style.css" rel="stylesheet" type="text/css">
+
+
+</head>
+
+<body>
+  <!-- Navigation bar -->
+  <div class="topnav">
+    <h1>CourseApp</h1>
+  </div>
+
+  <br>
+  <!--Image Slider html code -->
+  <div class="slideshow-container">
+    <div class="mySlides fade">
+      <img
+        src="https://scholarship-positions.com/wp-content/uploads/2018/06/Free-Online-Course-on-Applications-in-Communication-Acoustics.jpg"
+        style="width:100%">
+      <div class="text">Caption Text</div>
+    </div>
+
+    <div class="mySlides fade">
+      <img src="https://sportsworldghana.com/wp-content/uploads/2020/08/I.T.jpg"
+        style="width:100%">
+
+    </div>
+
+    <div class="mySlides fade">
+      <img src="https://thecurrent.pk/wp-content/uploads/2020/04/online.jpg"
+        style="width:100%">
+
+    </div>
+
+  </div>
+
+  <div style="text-align:center">
+    <span class="dot"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
+  </div>
+
+  <!--Course form and show data button-->
+  <div class="button_div">
+   
+      <button class="add_course" onclick="openForm()">ADD COURSE</button>
+
+    
+      <button class="html">HTML</button>
+    
+      <button class="json">JSON</button>
+    
+      <button class="allData" onclick="openForm1()">All Courses</button>
+    
+  </div>
+  <div class="about">
+    <h2>ABOUT US</h2>
+    <p>This is a  <b>CourseApp</b>. This app is used to add new Course along with all details like Id of course, name of course, duration of course, tutor of the course and the descripion of the course.</p>
+</div>
+
+
+<!-- footer part -->
+
+<footer>
+    <p>@ April 2021<br>
+     
+</footer>
+  <div class="form-popup" id="myForm">
+    <form method="GET" action="/course" class="form-container">
+      <h1>Add Course</h1>
+
+      <label for="courseID"><b>Course ID</b></label>
+      <input type="text" placeholder="Enter Course ID" name="courseID" required>
+      <br>
+
+      <label for="courseName"><b>Course Name</b></label>
+      <input type="text" placeholder="Enter Course Name" name="courseName" required>
+      <br>
+
+      <label for="duration"><b>Duration</b></label>
+      <input type="text" placeholder="Duration in Hours" name="duration" required>
+      <br>
+
+
+      <label for="tutor"><b>Tutor Name</b></label>
+      <input type="text" placeholder="Enter Tutor name" name="tutor" required>
+      <br>
+
+
+      <label for="description"><b>Description</b></label>
+      <input type="text" placeholder="Description About Course" name="discription" required>
+      <br>
+
+      <button type="submit" class="btn1">Add Course</button>
+      <button type="button" class="btn cancel" onclick="closeForm();">Cancel</button>
+    </form>
+</div>
+<div class="form-popup1" id="myForm1">
+  <table>
+    <thead>
+    <tr>
+            <th>Course ID</th>
+            <th>Course Name</th>
+            <th>Duration</th>
+            <th>Tutor</th>
+            <th>Description</th>
+
+    </tr>
+</thead>
+<tbody style="border: solid;">
+        
+    <% allCourse.forEach(e=>{ %>
+        <tr style="background-color: slategrey;">
+            <td><%= e.courseID%></td>
+            <td><%= e.courseName%></td>
+            <td><%= e.discription%></td>
+            <td><%= e.tutor%></td>
+            <td><%= e.courseName%></td>
+    
+            
+        </tr> 
+    <% }) %>
+</tbody>
+</table>
+   <button type="button" class="btn cancel" onclick="closeForm1();">Cancel</button>
+
+</div>
+</body>
+<script>
+
+function openForm1() {
+    document.getElementById("myForm1").style.display = "block";
+  }
+  function closeForm1() {
+    document.getElementById("myForm1").style.display = "none";
+  }
+  var slideIndex = 0;
+  showSlides();
+
+  function showSlides() {
+    var i;
+    var slides = document.getElementsByClassName("mySlides");
+    var dots = document.getElementsByClassName("dot");
+    for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+    }
+    slideIndex++;
+    if (slideIndex > slides.length) { slideIndex = 1 }
+    for (i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace(" active", "");
+    }
+    slides[slideIndex - 1].style.display = "block";
+    dots[slideIndex - 1].className += " active";
+    setTimeout(showSlides, 2000); // Change image every 2 seconds
+  }
+  
+
+  function openForm() {
+    document.getElementById("myForm").style.display = "block";
+  }
+
+  function closeForm() {
+    document.getElementById("myForm").style.display = "none";
+  }
+</script>
+
+
+</html>
